@@ -1,0 +1,58 @@
+<div class="container col-md-8 text-center">
+   <table class="table table-danger">
+      <tr>
+         <th colspan="7" class="h1 text-uppercase text-success">
+            Product List
+         </th>
+      </tr>
+      <tr>
+         <th>
+            <a class="btn btn-primary" href="/pokemon/add">Add</a>
+         </th>
+          <th>
+            <a class="btn btn-primary" href="/gundam">Gundam</a>
+         </th>
+         <th>
+            <a class="btn btn-primary" href="/pokemon">Pokemon</a>
+         </th>
+         <th colspan="3">
+            <form action="/pokemon/search" method="post">
+               <div class="form-group">
+                  <input class="form-control" type="search" placeholder="Search by product name" name="name" id="" required>
+               </div>
+            </form>
+         </th>
+         <th>
+            <a class="btn btn-primary" href="/toystore">Home</a>
+         </th>
+      </tr>
+      <tr>
+         <th>Product Name</th>
+         <th>Category</th>
+         <th>Origin</th>
+         <th>Image</th>
+         <th>Price</th>
+         <th>Description</th>
+         <th></th>
+      </tr>
+      {{#each pokemons }}
+      <tr>
+         <td>{{ name }}</td>
+         <td>{{ category }}</td>
+         <td>{{ origin }}</td>
+         <td>
+            <a href="/pokemon/detail/{{ _id }}">
+               <img src="{{ image }}" width="200" height="250">
+            </a>
+         </td>
+         <td>{{ price }}</td>
+         <td>{{ description }}</td>
+         <td>
+            <a class="btn btn-warning" href="/pokemon/edit/{{ _id }}">Edit</a>
+            <a class="btn btn-danger" href="/pokemon/delete/{{ _id }}"
+               onclick="return confirm('Are you sure to delete this product ?');">Delete</a>
+         </td>
+      </tr>
+      {{/each}}
+   </table>
+</div>
