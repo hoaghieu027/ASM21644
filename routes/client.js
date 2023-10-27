@@ -13,7 +13,6 @@ router.get('/', async(reg, res) => {
 
 router.get('/detail/:id', async (req, res) => {
   var id = req.params.id;
-  // SELECT * FROM student WHERE id = 'id'
   var toystore = await ToystoreModel.findById(id);
   res.render('toystore/detail', { toystore: toystore });
 })

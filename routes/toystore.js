@@ -1,6 +1,7 @@
 var express = require('express');
 var GundamModel = require('../models/GundamModel');
 var PokemonModel = require('../models/PokemonModel');
+// var FlycamModel = require('../models/FlycamModel');
 //const ToystoreModel = require('../models/ToystoreModel');
 var router = express.Router();
 
@@ -12,9 +13,10 @@ router.get('/', async (req, res) => {
    //var toystores = await toystoremodel.find();
    var gundams = await GundamModel.find();
    var pokemons = await PokemonModel.find();
+   // var flycams = await FlycamModel.find();
    //res.send(students);
    // render ra file view : views/student/index.hbs và gửi kèm data thông qua biến 'students'
-   res.render('toystore/index', { gundams: gundams, pokemons: pokemons });
+   res.render('toystore/index', { gundams: gundams, pokemons: pokemons,});
 })
 
 router.get('/detail/:id', async (req, res) => {
@@ -45,6 +47,9 @@ router.post('/add', async (req, res) => {
    }else if(category == "card"){
       await PokemonModel.create(toystore);
    }
+   // else if(category == "camera"){
+   //    await FlycamModel.create(toystore);
+   // }
    await ToystoreModel.create(toystore);
    console.log('Add succeed !');
    res.redirect('/toystore');
@@ -68,6 +73,7 @@ router.post('/search', async (req, res) => {
    var keyword = req.body.name;
    var gundams = await GundamModel.find({ name: new RegExp(keyword, "i") });
    var pokemons = await PokemonModel.find({ name: new RegExp(keyword, "i") });
+   // var flycams = await FlycamModel.find({ name: new RegExp(keyword, "i") });
    console.log(pokemons);
    //relative search
    //var toystores = await toystoremodel.find({ name: new RegExp(keyword, "i") });
