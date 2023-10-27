@@ -11,7 +11,6 @@ var loginRouter = require('./routes/login');
 var toystoreRouter = require('./routes/toystore');
 var gundamRouter = require('./routes/gundam');
 var pokemonRouter = require('./routes/pokemon');
-var flycamRouter = require('./routes/flycam');
 var app = express();
 
 // view engine setup
@@ -37,7 +36,6 @@ app.use('/login', loginRouter);
 app.use('/toystore', toystoreRouter);
 app.use('/gundam', gundamRouter);
 app.use('/pokemon', pokemonRouter);
-app.use('/flycam', flycamRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
